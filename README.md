@@ -25,9 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Resources
 
-Angular API doc: [here](https://angular.io/api)
-Bootstrap doc: [here](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
-Firebase: [here](https://console.firebase.google.com/)
-NgRx: [here](https://ngrx.io/)
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Angular API doc: [here](https://angular.io/api)
+* Angular CLI: [here](https://github.com/angular/angular-cli/blob/master/README.md).
+* Bootstrap doc: [here](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
+* Firebase: [here](https://console.firebase.google.com/)
+* NgRx: [here](https://ngrx.io/)
