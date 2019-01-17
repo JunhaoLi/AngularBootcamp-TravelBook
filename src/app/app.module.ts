@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { CreateTravelComponent } from './create-travel/create-travel.component';
-import { TravelHistoryComponent } from './travel-history/travel-history.component';
+import { TravelListComponent } from './travel-list/travel-list.component';
+import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
+import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { TravelHistoryComponent } from './travel-history/travel-history.componen
     HeaderComponent,
     HomeComponent,
     CreateTravelComponent,
-    TravelHistoryComponent
+    TravelListComponent,
+    TravelDetailComponent,
+    TravelListItemComponent
   ],
   imports: [
     BrowserModule
