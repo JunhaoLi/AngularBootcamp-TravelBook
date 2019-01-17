@@ -7,16 +7,20 @@ import { TravelEntry } from '../shared/TravelEntry.model';
   styleUrls: ['./travel-list.component.scss']
 })
 export class TravelListComponent implements OnInit {
-
+  selectedTravelItem: TravelEntry;
   travelHistoryList: TravelEntry[] = [
     <TravelEntry>{
-      title: 'Tokyo',
+      title: 'Tokyo Trip',
       description: 'Fun Journey',
+      fromDate: new Date('12/10/2018'),
+      toDate: new Date('12/20/2018'),
       pictureUrls: []
     },
     <TravelEntry>{
-      title: 'Hawaii',
+      title: 'Hawaii Trip',
       description: 'Vocano Journey',
+      fromDate: new Date('6/10/2019'),
+      toDate: new Date('6/20/2019'),
       pictureUrls: []
     }
   ];
@@ -26,4 +30,7 @@ export class TravelListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onTravelItemClick(index: number) {
+    this.selectedTravelItem = this.travelHistoryList[index];
+  }
 }

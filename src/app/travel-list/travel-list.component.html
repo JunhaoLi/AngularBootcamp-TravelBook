@@ -1,3 +1,30 @@
-<div>
-  travel list works
-</div>
+<div class="conatiner">
+  <div class="row">
+    <div class="col-md-5">
+      <ul class="list-group" *ngFor="let travelItem of travelHistoryList;let i = index">
+        <li class="list-group-item" (click)="onTravelItemClick(i)">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading">{{travelItem.title}}</h4>
+            <p class="list-group-item-text">{{travelItem.fromDate | date}} ~ {{travelItem.toDate | date}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-7" *ngIf="selectedTravelItem != null">
+      <div class="row">
+          <h2 class="col-12 alert alert-success">
+            {{selectedTravelItem.title}}
+          </h2> 
+      </div>
+      <div class="row travel-details">
+        <div class="col-6 input-group">
+          <span class="input-group-text">From: </span>
+          <input class="form-control" type="text" value="{{selectedTravelItem.fromDate | date}}" readonly>
+        </div>
+        <div class="col-6 input-group">
+          <span class="input-group-text">To: </span>
+          <input class="form-control" type="text" value="{{selectedTravelItem.toDate | date}}" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
