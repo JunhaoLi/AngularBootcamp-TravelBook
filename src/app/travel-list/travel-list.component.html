@@ -12,18 +12,18 @@
     </div>
     <div class="col-md-7" *ngIf="selectedTravelItem != null">
       <div class="row">
-          <h2 class="col-12 alert alert-success">
-            {{selectedTravelItem.title}}
-          </h2> 
+        <h2 class="col-12 alert alert-success">
+          {{selectedTravelItem.title}}
+        </h2>
       </div>
-      <div class="row travel-details">
-        <div class="col-6 input-group">
+      <div class="row d-flex justify-content-between">
+        <div class="d-flex item-group">
           <span class="input-group-text">From: </span>
           <input class="form-control" type="text" value="{{selectedTravelItem.fromDate | date}}" readonly>
         </div>
-        <div class="col-6 input-group">
-          <span class="input-group-text">To: </span>
-          <input class="form-control" type="text" value="{{selectedTravelItem.toDate | date}}" readonly>
+        <div class="d-flex item-group">
+          <span class="input-group-text">From: </span>
+          <input class="form-control" type="text" value="{{selectedTravelItem.fromDate | date}}" readonly>
         </div>
       </div>
     </div>
