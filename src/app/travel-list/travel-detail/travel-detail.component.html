@@ -1,3 +1,29 @@
-<p>
-  travel-detail works!
-</p>
+<div class="row">
+  <h2>
+    {{travelItem.title}}
+  </h2>
+</div>
+<div class="row d-flex justify-content-between">
+  <div class="d-flex item-group">
+    <span class="input-group-text">From:</span>
+    <input type="text" class="form-control" value="{{travelItem.fromDate | date}}" readonly>
+  </div>
+  <div class="d-flex item-group">
+    <span class="input-group-text">To:</span>
+    <input type="text" class="form-control" value="{{travelItem.toDate | date}}" readonly>
+  </div>
+</div>
+<div class="row">
+  <h3>Description</h3>
+  <textarea class="form-control" readonly rows="8">{{travelItem.description}}</textarea>
+</div>
+<br>
+<div class="row d-flex justify-content-between">
+  <div *ngFor="let url of travelItem.pictureUrls">
+    <img class="img-fluid img-thumbnail" style="max-height: 200px" [src]="url" alt="{{travelItem.Title}} image">
+  </div>
+</div>
+<br>
+<div class="row d-flex justify-content-center">
+  <button class="btn btn-primary" role="button">Edit this travel</button>
+</div>

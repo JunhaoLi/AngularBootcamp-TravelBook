@@ -7,7 +7,9 @@ import { TravelEntry } from '../shared/TravelEntry.model';
   styleUrls: ['./travel-list.component.scss']
 })
 export class TravelListComponent implements OnInit {
-  selectedTravelItem: TravelEntry;
+  
+  selectedTravelItem: TravelEntry = null;
+  
   travelHistoryList: TravelEntry[] = [
     <TravelEntry>{
       title: 'Tokyo Trip',
@@ -36,7 +38,8 @@ export class TravelListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onTravelItemClick(index: number) {
-    this.selectedTravelItem = this.travelHistoryList[index];
+  onTravelItemSelected(travelEntry: TravelEntry) {
+    console.log(travelEntry);
+    this.selectedTravelItem = travelEntry;
   }
 }

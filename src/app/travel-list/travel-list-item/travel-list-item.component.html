@@ -1,3 +1,4 @@
-<p>
-  travel-list-item works!
-</p>
+<div class="pull-left" (click)="onSelected()">
+  <h4 class="list-group-item-heading">{{travelItem.title}}</h4>
+  <p class="list-group-item-text">{{travelItem.fromDate | date}} ~ {{travelItem.toDate | date}}</p>
+</div>

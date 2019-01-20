@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TravelEntry } from 'src/app/shared/TravelEntry.model';
 
 @Component({
   selector: 'app-travel-list-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TravelListItemComponent implements OnInit {
 
+  @Input()travelItem: TravelEntry;
+  @Output()onTravelItemSelected: EventEmitter<TravelEntry> = new EventEmitter<TravelEntry>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelected() {
+    this.onTravelItemSelected.emit(this.travelItem);
+  }
 }
