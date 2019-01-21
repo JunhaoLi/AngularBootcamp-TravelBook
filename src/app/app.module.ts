@@ -8,6 +8,7 @@ import { CreateTravelComponent } from './create-travel/create-travel.component';
 import { TravelListComponent } from './travel-list/travel-list.component';
 import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
 import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
+import { ToggleMenuDirective } from './shared/toggleMenu.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TravelListItemComponent } from './travel-list/travel-list-item/travel-l
     CreateTravelComponent,
     TravelListComponent,
     TravelDetailComponent,
-    TravelListItemComponent
+    TravelListItemComponent,
+    ToggleMenuDirective
   ],
   imports: [
     BrowserModule

@@ -39,7 +39,6 @@ export class TravelListComponent implements OnInit {
   }
 
   onTravelItemSelected(travelEntry: TravelEntry) {
-    console.log(travelEntry);
     this.selectedTravelItem = travelEntry;
   }
 }
