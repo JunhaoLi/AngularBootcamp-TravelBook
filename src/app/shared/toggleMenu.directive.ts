@@ -1,16 +1,18 @@
-import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
 
 @Directive({
     selector: '[toggleMenu]'
 })
 export class ToggleMenuDirective {
+    @Input('toggleMenu')targetId;
+    
     toggle = false;
 
-    @HostListener('click') onMenuClicked() {
+    @HostListener('click', ['$event']) onMenuClicked(e: Event) {
         this.toggle = !this.toggle;
         for (let dom of this.elementRef.nativeElement.children)
         {
-            if (dom.className.indexOf('dropdown-menu') != -1) {
+            if (dom.id.indexOf(this.targetId) != -1) {
                 if (this.toggle) {
                     this.renderer.addClass(dom, 'd-block');
                 }
@@ -19,6 +21,7 @@ export class ToggleMenuDirective {
                 }
             }
         }
+        e.stopPropagation();
     }
 
     constructor(private elementRef: ElementRef, private renderer: Renderer2) {
