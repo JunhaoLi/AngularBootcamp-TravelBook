@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header [isUserAuthorized]="isUserAuthorized"></app-header>
 
 <div class="container">
   <div class="row">
     <div class="col-12">
-        <app-home></app-home>
+        <app-home (isUserAuthorized)="onAuthorize($event)"></app-home>
         <app-create-travel></app-create-travel>
         <app-travel-list></app-travel-list>
     </div>
