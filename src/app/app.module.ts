@@ -10,6 +10,7 @@ import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail
 import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
 import { AuthService } from './shared/auth.service';
+import { DataService } from './shared/data.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { AuthService } from './shared/auth.service';
   imports: [
     BrowserModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

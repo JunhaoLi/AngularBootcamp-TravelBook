@@ -8,8 +8,6 @@ import { AuthService } from '../shared/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  @Output()isUserAuthorized: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -17,11 +15,9 @@ export class HomeComponent implements OnInit {
 
   onSignupClick() {
     this.authService.SignUp();
-    // this.isUserAuthorized.emit(true);
   }
 
   onSigninClick() {
     this.authService.SignIn();
-    // this.isUserAuthorized.emit(true);
   }
 }

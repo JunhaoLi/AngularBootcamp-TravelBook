@@ -7,7 +7,6 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input()isUserAuthorized;
 
   toggleManageMenu: boolean = false;
 

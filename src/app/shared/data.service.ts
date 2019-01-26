@@ -1,6 +1,14 @@
-import { TravelEntry } from '../shared/TravelEntry.model';
+import { TravelEntry } from './TravelEntry.model';
+import { Observable, Subject } from 'rxjs';
 
 export class DataService {
+
+    public onTravelListChanged: Subject<TravelEntry[]> = new Subject<TravelEntry[]>();
+
+    public onSelectedTravelEntryChanged: Subject<number> = new Subject<number>();
+
+    private selectedTravelIndex;
+
     private travelHistoryList: TravelEntry[] = [
         <TravelEntry>{
           title: 'Tokyo Trip',
@@ -32,11 +40,18 @@ export class DataService {
           return this.travelHistoryList;
       }
 
+      selectTravelEntry(index: number) {
+          this.selectedTravelIndex = index;
+          this.onSelectedTravelEntryChanged.next(index);
+      }
+
       updateTravelHistory(index: number, travelItem: TravelEntry) {
           this.travelHistoryList[index] = travelItem;
+          this.onTravelListChanged.next(this.travelHistoryList.slice());
       }
 
       deleteTravelHistory(index: number) {
           this.travelHistoryList.splice(index, 1);
+          this.onTravelListChanged.next(this.travelHistoryList.slice());
       }
 }

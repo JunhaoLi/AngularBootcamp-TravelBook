@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TravelEntry } from 'src/app/shared/TravelEntry.model';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-travel-list-item',
@@ -8,15 +9,18 @@ import { TravelEntry } from 'src/app/shared/TravelEntry.model';
 })
 export class TravelListItemComponent implements OnInit {
 
-  @Input()travelItem: TravelEntry;
-  @Output()onTravelItemSelected: EventEmitter<TravelEntry> = new EventEmitter<TravelEntry>();
+  @Input()travelItemIndex: number;
 
-  constructor() { }
+  private travelItem: TravelEntry;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.travelItem = this.dataService.getTravelHistory(this.travelItemIndex);
   }
 
   onSelected() {
-    this.onTravelItemSelected.emit(this.travelItem);
+    console.log(this.travelItemIndex);
+    this.dataService.selectTravelEntry(this.travelItemIndex);
   }
 }

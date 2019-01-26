@@ -7,16 +7,13 @@
   <br>
   <div class="row">
     <div class="col-xs-12 col-md-5">
-      <ul class="list-group" *ngFor="let travelItem of travelHistoryList">
+      <ul class="list-group" *ngFor="let travelItem of travelHistoryList; let i = index">
         <li class="list-group-item">
-          <app-travel-list-item [travelItem]="travelItem" (onTravelItemSelected)="onTravelItemSelected($event)"></app-travel-list-item>
+          <app-travel-list-item [travelItemIndex]="i"></app-travel-list-item>
         </li>
       </ul>
     </div>
     <div class="col-xs-12 col-md-7">
-      <app-travel-detail *ngIf="selectedTravelItem;else infoText" [travelItem]="selectedTravelItem"></app-travel-detail>
-      <ng-template #infoText>
-        <p class="alert alert-info" role="alert">Please select a travel item</p>
-      </ng-template>
+      <app-travel-detail></app-travel-detail>
     </div>
   </div>
