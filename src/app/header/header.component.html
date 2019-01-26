@@ -15,10 +15,10 @@
           <a class="nav-link">New Travel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'disabled': !isUserAuthorized}">Travel History</a>
+          <a class="nav-link" [ngClass]="{'disabled': !authService.isUserSignedIn()}">Travel History</a>
         </li>
       </ul>
-      <ul class="navbar-nav" *ngIf="isUserAuthorized">
+      <ul class="navbar-nav" *ngIf="authService.isUserSignedIn()">
         <li class="nav-item dropdown" toggleMenu="manage-button-dropdown-men">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
             aria-expanded="false">

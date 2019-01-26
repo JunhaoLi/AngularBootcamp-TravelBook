@@ -9,6 +9,7 @@ import { TravelListComponent } from './travel-list/travel-list.component';
 import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
 import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ToggleMenuDirective } from './shared/toggleMenu.directive';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

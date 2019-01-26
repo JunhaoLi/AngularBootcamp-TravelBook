@@ -1,5 +1,5 @@
 export class AuthService {
-    isUserSignIn = false;
+    public isUserSignIn = false;
 
     SignIn() {
         this.isUserSignIn = true;
@@ -11,5 +11,9 @@ export class AuthService {
 
     SignOut() {
         this.isUserSignIn = false;
+    }
+
+    isUserSignedIn() {
+        return this.isUserSignIn;
     }
 }
