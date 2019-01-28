@@ -14,6 +14,7 @@ export class AuthService {
     }
 
     isUserSignedIn() {
-        return this.isUserSignIn;
+        return true;
+        // return this.isUserSignIn;
     }
 }

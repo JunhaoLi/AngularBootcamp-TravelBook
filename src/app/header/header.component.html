@@ -1,21 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container" toggleMenu="navbarNav">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Travel Book</a>
+      <a class="navbar-brand" routerLink="/">Travel Book</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link">Welcome</a>
+        <li class="nav-item" routerLinkActive="bold-font" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/">Welcome</a>
+        </li>
+        <li class="nav-item" routerLinkActive="bold-font">
+          <a class="nav-link" routerLink="/create">New Travel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">New Travel</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'disabled': !authService.isUserSignedIn()}">Travel History</a>
+          <a class="nav-link" 
+             [ngClass]="{'disabled': !authService.isUserSignedIn()}"
+             routerLink="/history"
+             routerLinkActive="bold-font">
+             Travel History
+          </a>
         </li>
       </ul>
       <ul class="navbar-nav" *ngIf="authService.isUserSignedIn()">

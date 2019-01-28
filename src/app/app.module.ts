@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,12 @@ import { TravelListItemComponent } from './travel-list/travel-list-item/travel-l
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
 import { AuthService } from './shared/auth.service';
 import { DataService } from './shared/data.service';
+
+const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'create', component: CreateTravelComponent},
+  {path: 'history', component: TravelListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +31,8 @@ import { DataService } from './shared/data.service';
     ToggleMenuDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     AuthService,
