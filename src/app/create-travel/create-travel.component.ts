@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-travel',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTravelComponent implements OnInit {
 
-  constructor() { }
+  isEdit = false;
+  editItemIndex = -1;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.isEdit = this.route.snapshot.queryParams['edit'] == null ? false : this.route.snapshot.queryParams['edit'] == 'true';
+    this.editItemIndex = this.route.snapshot.queryParams['id'] == null ? -1 : +this.route.snapshot.queryParams['id'];
+    console.log(this.editItemIndex);
   }
-
 }

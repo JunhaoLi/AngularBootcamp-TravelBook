@@ -20,7 +20,6 @@ export class TravelListItemComponent implements OnInit {
   }
 
   onSelected() {
-    console.log(this.travelItemIndex);
     this.dataService.selectTravelEntry(this.travelItemIndex);
   }
 }

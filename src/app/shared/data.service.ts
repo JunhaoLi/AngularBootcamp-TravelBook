@@ -7,7 +7,7 @@ export class DataService {
 
     public onSelectedTravelEntryChanged: Subject<number> = new Subject<number>();
 
-    private selectedTravelIndex;
+    public selectedTravelIndex = -1;
 
     private travelHistoryList: TravelEntry[] = [
         <TravelEntry>{

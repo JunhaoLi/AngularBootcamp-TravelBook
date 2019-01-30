@@ -1,14 +1,14 @@
 <div class="conatiner">
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-success">Create new travel item</button>
+      <button class="btn btn-success" (click)="onCreateNewButtonClicked()">Create new travel item</button>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-xs-12 col-md-5">
       <ul class="list-group" *ngFor="let travelItem of travelHistoryList; let i = index">
-        <li class="list-group-item">
+        <li class="list-group-item" [ngClass]="{'active': i == selectedTravelItemIndex}">
           <app-travel-list-item [travelItemIndex]="i"></app-travel-list-item>
         </li>
       </ul>
