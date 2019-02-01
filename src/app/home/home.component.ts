@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +8,20 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private authService: AuthService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.router.navigate(['', 'signin']);
   }
 
-  onSignupClick() {
-    this.authService.SignUp();
-  }
-
-  onSigninClick() {
-    this.authService.SignIn();
+  selectLogInOptoin(e: any) {
+    if (e.target.value === 'signin') {
+      this.router.navigate(['', 'signin'], {preserveQueryParams: true});
+    } else {
+      this.router.navigate(['', 'signup']);
+    }
   }
 }

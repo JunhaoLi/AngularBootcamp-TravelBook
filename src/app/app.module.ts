@@ -12,11 +12,19 @@ import { TravelListItemComponent } from './travel-list/travel-list-item/travel-l
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
 import { AuthService } from './shared/auth.service';
 import { DataService } from './shared/data.service';
+import { SigninComponent } from './home/signin/signin.component';
+import { SignupComponent } from './home/signup/signup.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent,children: [
+    {path: 'signin', component: SigninComponent},
+    {path: 'signup', component: SignupComponent}
+  ]},
   {path: 'create', component: CreateTravelComponent},
-  {path: 'history', component: TravelListComponent}
+  {path: 'history', component: TravelListComponent},
+  {path: 'not-found', component: NotFoundComponent, pathMatch: 'full'},
+  {path: '**', redirectTo: 'not-found'}
 ];
 
 @NgModule({
@@ -28,7 +36,10 @@ const appRoutes: Routes = [
     TravelListComponent,
     TravelDetailComponent,
     TravelListItemComponent,
-    ToggleMenuDirective
+    ToggleMenuDirective,
+    SigninComponent,
+    SignupComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
