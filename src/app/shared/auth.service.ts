@@ -1,12 +1,14 @@
-export class AuthService {
-    public isUserSignIn = false;
+import { Observable } from 'rxjs';
 
-    SignIn() {
-        this.isUserSignIn = true;
+export class AuthService {
+    private isUserSignIn = false;
+
+    SignIn(): Promise<Boolean> {
+       return this.logInToServer();
     }
 
-    SignUp() {
-        this.isUserSignIn = true;
+    SignUp(): Promise<Boolean> {
+       return this.logInToServer();
     }
 
     SignOut() {
@@ -14,7 +16,23 @@ export class AuthService {
     }
 
     isUserSignedIn() {
-        return true;
-        // return this.isUserSignIn;
+        return this.isUserSignIn;
+    }
+
+    isUserAuthenticated(): Promise<Boolean> {
+        return new Promise<Boolean>((resolve, reject) => {
+            setTimeout(() => {
+                resolve(this.isUserSignIn);
+            }, 800);
+        }); 
+    }
+
+    logInToServer() {
+        return new Promise<Boolean>((resolve, reject) => {
+            setTimeout(() => {
+                this.isUserSignIn = true;
+                resolve(true);
+            }, 800);
+        });
     }
 }
