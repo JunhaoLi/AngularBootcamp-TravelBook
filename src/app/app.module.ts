@@ -16,6 +16,8 @@ import { SignupComponent } from './home/signup/signup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './shared/auth-guard.service';
+import { CanDeactivateGuard } from './shared/can-deactivate.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { AuthGuard } from './shared/auth-guard.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     AuthService,
     AuthGuard,
-    DataService
+    DataService,
+    CanDeactivateGuard
   ],
   bootstrap: [AppComponent]
 })

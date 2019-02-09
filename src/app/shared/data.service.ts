@@ -32,6 +32,11 @@ export class DataService {
         }
       ];
 
+      addTravelHistory(item: TravelEntry) {
+        this.travelHistoryList.push(item);
+        this.onTravelListChanged.next(this.travelHistoryList.slice());
+      }
+
       getTravelHistory(index: number): TravelEntry {
           return this.travelHistoryList[index];
       }

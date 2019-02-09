@@ -7,14 +7,15 @@ import { TravelListComponent } from './travel-list/travel-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './shared/auth-guard.service';
+import { CanDeactivateGuard } from './shared/can-deactivate.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, children: [
         { path: 'signin', component: SigninComponent },
         { path: 'signup', component: SignupComponent }
     ]},
-    { path: 'create', component: CreateTravelComponent },
-    { path: 'history', component: TravelListComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard]},
+    { path: 'create', component: CreateTravelComponent, canDeactivate: [CanDeactivateGuard] },
+    { path: 'history', component: TravelListComponent},
     { path: 'not-found', component: NotFoundComponent, pathMatch: 'full' },
     { path: '**', redirectTo: 'not-found' }
 ];
