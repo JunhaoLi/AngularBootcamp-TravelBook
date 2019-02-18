@@ -1,7 +1,9 @@
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 export class AuthService {
-    private isUserSignIn = false;
+    isUserSignIn = false;
+
+    signinStatusChanged: Subject<boolean> = new Subject<boolean>();
 
     SignIn(): Promise<Boolean> {
        return this.logInToServer();
@@ -31,6 +33,7 @@ export class AuthService {
         return new Promise<Boolean>((resolve, reject) => {
             setTimeout(() => {
                 this.isUserSignIn = true;
+                this.signinStatusChanged.next(this.isUserSignIn);
                 resolve(true);
             }, 800);
         });

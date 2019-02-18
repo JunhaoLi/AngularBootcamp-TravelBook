@@ -6,12 +6,9 @@ import { AuthService } from 'src/app/shared/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent {
 
   constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
 
   onSigninClick() {
     this.authService.SignIn();

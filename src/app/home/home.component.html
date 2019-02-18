@@ -8,16 +8,17 @@
       <label class="form-check-label" for="signIn">Sign Up (new user)</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" id="signIn" name="logInOptions" value="signin" (click)="selectLogInOptoin($event)" checked>
+      <input class="form-check-input" type="radio" id="signIn" name="logInOptions" value="signin" (click)="selectLogInOptoin($event)">
       <label class="form-check-label" for="signIn">Sign In (existing user)</label>
     </div>
   </div>
   <hr>
   <div class="row justify-content-center">
-    <div class="col-6 col-offset-3">
+    <div class="col-6 col-offset-3" *ngIf="!isUserSignedIn">
       <router-outlet></router-outlet>
-      <!-- <app-signin></app-signin>
-      <app-signup></app-signup> -->
+    </div>
+    <div *ngIf="isUserSignedIn" class="alert alert-success">
+      You are signed in
     </div>
   </div>
 </div>

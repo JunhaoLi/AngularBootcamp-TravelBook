@@ -1,41 +1,36 @@
 <h3>
   {{isEdit ? 'Editing' : 'Creating'}} travel item {{editItemIndex == -1 ? '' : editItemIndex}}
 </h3>
-<!-- <div class="container">
-  <div class="row">
-    <input type="text" (input)="onFormValueChanged()">
-  </div>
-</div> -->
 
 <div class="container">
   <div class="row">
     <div class="col-12">
         <form *ngIf="isTddDriven" #f="ngForm" (ngSubmit)="onSubmitForm()" class="md-auto md-offset-3">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" id="title" class="form-control" ngModel name="title" required>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" ngModel name="title" required>
+          </div>
+          <div class="form-row">
+            <div class="col-12 col-md-6">
+                <label for="fromDate">From (mm/dd/yyyy)</label>
+                <input type="date" id="fromDate" class="form-control" ngModel name="fromDate" required>
             </div>
-            <div class="form-row">
-              <div class="col-12 col-md-6">
-                  <label for="fromDate">From (mm/dd/yyyy)</label>
-                  <input type="date" id="fromDate" class="form-control" ngModel name="fromDate" required>
-              </div>
-              <div class="col-12 col-md-6">
-                  <label for="toDate">To (mm/dd/yyyy)</label>
-                  <input type="date" id="toDate" class="form-control" ngModel name="toDate" required>
-              </div>
+            <div class="col-12 col-md-6">
+                <label for="toDate">To (mm/dd/yyyy)</label>
+                <input type="date" id="toDate" class="form-control" ngModel name="toDate" required>
             </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea id="description" cols="30" rows="10" class="form-control" ngModel name="description"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="imageUrl">Image Url</label>
-              <input type="url" id="imageUrl" class="form-control" ngModel name="imageUrl">
-            </div>
-            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
-            <button class="btn btn-warning"type="button" (click)="onFormClear()">Clear</button>
-          </form>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" cols="30" rows="10" class="form-control" ngModel name="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image Url</label>
+            <input type="url" id="imageUrl" class="form-control" ngModel name="imageUrl">
+          </div>
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{this.isEditMode ? 'Update' : 'Add'}}</button>
+          <button class="btn btn-warning"type="button" (click)="onFormClear()">Clear</button>
+        </form>
     </div>
   </div>
 </div>
