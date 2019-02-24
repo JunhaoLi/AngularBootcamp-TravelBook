@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICanComponentDeactivate } from '../shared/can-deactivate.service';
 import { Observable } from 'rxjs';
-import { NgForm, FormGroup, FormControl, FormArray, Validators, AbstractControl } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DataService } from '../shared/data.service';
 import { TravelEntry } from '../shared/TravelEntry.model';
+import { TravelTitleRemoteValidator } from './travel-title-remote-validator.component';
 
 @Component({
   selector: 'app-create-travel',
@@ -19,6 +20,7 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
 
   isEditMode = false;
   editItemIndex = -1;
+
   travelEntry: TravelEntry;
 
   constructor(
@@ -36,12 +38,12 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
     }
     if (!this.isTddDriven) {
       this.travelFormGroup = new FormGroup({
-        'title': new FormControl(this.travelEntry.title, [Validators.required, Validators.minLength(3)]),
+        'title': new FormControl(this.travelEntry.title, [Validators.required, Validators.minLength(3)], new TravelTitleRemoteValidator().validate),
         'fromDate': new FormControl(this.formatDateTimeStr(this.travelEntry.fromDate), Validators.required),
         'toDate': new FormControl(this.formatDateTimeStr(this.travelEntry.toDate), Validators.required),
         'description': new FormControl(this.travelEntry.description),
         'imageUrls': this.getImageUrlFormArray(this.travelEntry.pictureUrls)
-      });
+      }, {validators: this.dateValidator});
     }
   }
 
@@ -77,16 +79,19 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
         title: this.travelFormGroup.value['title'],
         fromDate: new Date(this.travelFormGroup.value['fromDate']),
         toDate: new Date(this.travelFormGroup.value['toDate']),
-        description: this.travelFormGroup.value['description']
+        description: this.travelFormGroup.value['description'],
+        pictureUrls: this.travelFormGroup.value['imageUrls']
+
       };
     }
     if (this.isEditMode) {
       this.dataService.updateTravelHistory(this.editItemIndex, updatedEntry);
-    } else {
-      this.dataService.addTravelHistory(updatedEntry);
-    }
+      this.router.navigate(['/history'], {queryParams: {'id': this.editItemIndex}});
 
-    this.router.navigate(['/history'], {queryParams: this.isEditMode ? {'id': this.editItemIndex} : null});
+    } else {
+      let index = this.dataService.addTravelHistory(updatedEntry);
+      this.router.navigate(['/history'], {queryParams: {'id': index}});
+    }
   }
 
   onFormClear() {
@@ -122,24 +127,40 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
   }
 
   public onAddImageUrl():void {
-    (<FormArray>this.travelFormGroup.get('imageUrls')).push(new FormControl(null, Validators.required));
+    (<FormArray>this.travelFormGroup.get('imageUrls')).push(
+      new FormControl(
+        null,
+        [Validators.required, Validators.pattern(/(((http|https)\:\/\/)|(www)){1}[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/)]));
   }
 
   public getControls(): AbstractControl[] {
     return (<FormArray>this.travelFormGroup.get('imageUrls')).controls;
   }
 
+  private dateValidator(control: FormGroup): ValidationErrors {
+    if (control.value['fromDate'] && control.value['toDate']) {
+      let fromDate = new Date(control.value['fromDate']);
+      let toDate = new Date(control.value['toDate']);
+      return fromDate <= toDate ? null : {'fromToDateRangeError': 'From/To date range is invalid'};
+    }
+    return null;
+  }
+
   private getImageUrlFormArray(imageUrls: string[]): FormArray {
     let imageUrlControls: FormArray = new FormArray([]);
-    for (let i = 0; i < imageUrls.length; i++) {
-      imageUrlControls.push(new FormControl(imageUrls[i], Validators.required));
+    if (imageUrls) {
+      for (let i = 0; i < imageUrls.length; i++) {
+        imageUrlControls.push(new FormControl(imageUrls[i], [
+          Validators.required,
+          Validators.pattern(/(((http|https)\:\/\/)|(www)){1}[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z0-9\&\.\/\?\:@\-_=#])*/)]));
+      }
     }
     return imageUrlControls;
   }
 
   private formatDateTimeStr(date: Date): string {
     let year = this.travelEntry.toDate.getFullYear();
-    let month = this.travelEntry.toDate.getMonth() > 9 ? this.travelEntry.toDate.getMonth() : `0${this.travelEntry.toDate.getMonth()}`;
+    let month = this.travelEntry.toDate.getMonth() > 9 ? this.travelEntry.toDate.getMonth() + 1 : `0${this.travelEntry.toDate.getMonth() + 1}`;
     let day =  this.travelEntry.toDate.getDate() > 9 ? this.travelEntry.toDate.getDate() : `0${this.travelEntry.toDate.getDate()}`;
     return `${year}-${month}-${day}`;
   }

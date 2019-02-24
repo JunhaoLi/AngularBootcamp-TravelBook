@@ -38,6 +38,12 @@
           <label for="title">Title</label>
           <input type="text" id="title" class="form-control" formControlName="title" name="title">
         </div>
+        <div class="form-row" 
+            *ngIf="travelFormGroup?.controls?.title?.errors?.invalidTitle">
+          <div class="col-12 alert alert-danger" style="margin-top: 5px">
+            {{travelFormGroup.controls.title.errors['invalidTitle']}}
+          </div>
+        </div>
         <div class="form-row">
           <div class="col-12 col-md-6">
             <label for="fromDate">From (mm/dd/yyyy)</label>
@@ -46,6 +52,11 @@
           <div class="col-12 col-md-6">
             <label for="toDate">To (mm/dd/yyyy)</label>
             <input type="date" id="toDate" class="form-control" formControlName="toDate" name="toDate">
+          </div>
+        </div>
+        <div class="form-row" *ngIf="travelFormGroup.invalid && travelFormGroup.errors && travelFormGroup.errors['fromToDateRangeError']">
+          <div class="col-12 alert alert-danger" style="margin-top: 5px">
+            {{travelFormGroup.errors['fromToDateRangeError']}}
           </div>
         </div>
         <div class="form-group">
