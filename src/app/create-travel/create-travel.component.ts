@@ -29,8 +29,8 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
     private dataService: DataService) { }
 
   ngOnInit() {
-    this.isEditMode = this.route.snapshot.queryParams['edit'] == null ? false : this.route.snapshot.queryParams['edit'] == 'true';
-    this.editItemIndex = this.route.snapshot.queryParams['id'] == null ? -1 : +this.route.snapshot.queryParams['id'];
+    this.isEditMode = this.route.snapshot.queryParamMap.get('edit') == null ? false : this.route.snapshot.queryParamMap.get('edit') == 'true';
+    this.editItemIndex = this.route.snapshot.queryParamMap.get('id') == null ? -1 : +this.route.snapshot.queryParamMap.get('id');
     if (this.isEditMode) {
       this.travelEntry = this.dataService.getTravelHistory(this.editItemIndex);
     } else {
