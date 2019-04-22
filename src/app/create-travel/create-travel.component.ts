@@ -115,7 +115,7 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
   }
 
   canDeactive(): Observable<boolean> | Promise<boolean> | boolean {
-    if ((this.isTddDriven && !this.form.touched) || this.travelFormGroup.touched) {
+    if ((this.isTddDriven && !this.form.touched) || !this.travelFormGroup.touched) {
       return true;
     } else {
       return confirm('Do you want to discard the changes?');
