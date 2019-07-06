@@ -11,16 +11,16 @@ import { TravelListComponent } from './travel-list/travel-list.component';
 import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
 import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
-import { AuthService } from './shared/auth.service';
-import { DataService } from './shared/data.service';
+import { AuthService } from './Core/Auth/auth.service';
+import { DataService } from './travel-list/travel-list.service';
 import { SigninComponent } from './home/signin/signin.component';
 import { SignupComponent } from './home/signup/signup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './shared/auth-guard.service';
+import { AuthGuard } from './Core/Auth/auth-guard.service';
 import { CanDeactivateGuard } from './shared/can-deactivate.service';
 import { LoggingInterceptor } from './shared/logging-interceptor.service';
-import { AuthInterceptor } from './shared/auth-interceptor.service';
+import { AuthInterceptor } from './Core/Auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [

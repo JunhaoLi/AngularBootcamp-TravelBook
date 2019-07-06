@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICanComponentDeactivate } from '../shared/can-deactivate.service';
 import { Observable } from 'rxjs';
 import { NgForm, FormGroup, FormControl, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { DataService } from '../shared/data.service';
+import { DataService } from '../travel-list/travel-list.service';
 import { TravelEntry } from '../shared/TravelEntry.model';
 import { TravelTitleRemoteValidator } from './travel-title-remote-validator.component';
 
@@ -115,7 +115,7 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
   }
 
   canDeactive(): Observable<boolean> | Promise<boolean> | boolean {
-    if ((this.isTddDriven && !this.form.touched) || !this.travelFormGroup.touched) {
+    if ((this.isTddDriven && !this.form.touched) || (this.isEditMode || !this.travelFormGroup.touched)) {
       return true;
     } else {
       return confirm('Do you want to discard the changes?');

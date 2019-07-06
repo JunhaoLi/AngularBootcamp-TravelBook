@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { TravelEntry } from './TravelEntry.model';
+import { TravelEntry } from '../shared/TravelEntry.model';
 
 @Injectable({providedIn: 'root'})
 export class DataService {

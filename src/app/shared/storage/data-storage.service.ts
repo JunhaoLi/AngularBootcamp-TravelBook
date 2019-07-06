@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 
-import { DataService } from './data.service';
-import { TravelEntry } from './TravelEntry.model';
+import { DataService } from '../../travel-list/travel-list.service';
+import { TravelEntry } from '../TravelEntry.model';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})

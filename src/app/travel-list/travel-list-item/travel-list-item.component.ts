@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TravelEntry } from 'src/app/shared/TravelEntry.model';
-import { DataService } from 'src/app/shared/data.service';
+import { DataService } from 'src/app/travel-list/travel-list.service';
 
 @Component({
   selector: 'app-travel-list-item',

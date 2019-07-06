@@ -1,9 +1,9 @@
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { DataService } from './data.service';
+import { DataService } from '../../travel-list/travel-list.service';
 import { DataStorageService } from './data-storage.service';
-import { TravelEntry } from './TravelEntry.model';
+import { TravelEntry } from '../TravelEntry.model';
 
 @Injectable({providedIn: 'root'})
 export class DataResolver implements Resolve<TravelEntry[]> {

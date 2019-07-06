@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TravelEntry } from '../shared/TravelEntry.model';
-import { DataService } from '../shared/data.service';
+import { DataService } from './travel-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
