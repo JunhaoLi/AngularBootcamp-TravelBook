@@ -159,9 +159,9 @@ export class CreateTravelComponent implements OnInit, AfterViewInit, ICanCompone
   }
 
   private formatDateTimeStr(date: Date): string {
-    let year = this.travelEntry.toDate.getFullYear();
-    let month = this.travelEntry.toDate.getMonth() > 9 ? this.travelEntry.toDate.getMonth() + 1 : `0${this.travelEntry.toDate.getMonth() + 1}`;
-    let day =  this.travelEntry.toDate.getDate() > 9 ? this.travelEntry.toDate.getDate() : `0${this.travelEntry.toDate.getDate()}`;
+    let year = date.getFullYear();
+    let month = date.getMonth() > 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
+    let day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`;
     return `${year}-${month}-${day}`;
   }
 }

@@ -15,6 +15,10 @@ export class DataService {
     private travelHistoryList: TravelEntry[] = [];
 
       setTravelHistories(histories: TravelEntry[]): void {
+        histories.forEach((travelHistory: TravelEntry) => {
+            travelHistory.fromDate = new Date(travelHistory.fromDate);
+            travelHistory.toDate = new Date(travelHistory.toDate);
+        });
         this.travelHistoryList = histories;
       }
 

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +19,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './shared/auth-guard.service';
 import { CanDeactivateGuard } from './shared/can-deactivate.service';
+import { LoggingInterceptor } from './shared/logging-interceptor.service';
+import { AuthInterceptor } from './shared/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,17 @@ import { CanDeactivateGuard } from './shared/can-deactivate.service';
     AuthService,
     AuthGuard,
     DataService,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
