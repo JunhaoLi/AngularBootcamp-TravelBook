@@ -14,7 +14,7 @@ import { TravelTitleRemoteValidator } from './travel-title-remote-validator.comp
 })
 export class CreateTravelComponent implements OnInit, AfterViewInit, ICanComponentDeactivate{
   isTddDriven = false;
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: false }) form: NgForm;
 
   travelFormGroup: FormGroup;
 
