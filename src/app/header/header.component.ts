@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 
-import { AuthService } from '../Core/Auth/auth.service';
+import { AuthService } from '../core/auth/auth.service';
 import { DataStorageService } from '../shared/storage/data-storage.service';
 
 @Component({
