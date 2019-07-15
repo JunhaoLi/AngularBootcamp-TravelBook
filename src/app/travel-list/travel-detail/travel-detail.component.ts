@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TravelEntry } from 'src/app/shared/TravelEntry.model';
 import { DataService } from 'src/app/travel-list/travel-list.service';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

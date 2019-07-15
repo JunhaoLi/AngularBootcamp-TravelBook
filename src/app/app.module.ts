@@ -11,16 +11,16 @@ import { TravelListComponent } from './travel-list/travel-list.component';
 import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
 import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
 import { ToggleMenuDirective } from './shared/toggleMenu.directive';
-import { AuthService } from './core/auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { DataService } from './travel-list/travel-list.service';
-import { SigninComponent } from './home/signin/signin.component';
-import { SignupComponent } from './home/signup/signup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './core/auth/auth-guard.service';
+import { AuthGuard } from './auth/auth-guard.service';
 import { CanDeactivateGuard } from './shared/can-deactivate.service';
 import { LoggingInterceptor } from './shared/logging-interceptor.service';
-import { AuthInterceptor } from './core/auth/auth-interceptor.service';
+import { AuthInterceptor } from './auth/auth-interceptor.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +32,9 @@ import { AuthInterceptor } from './core/auth/auth-interceptor.service';
     TravelDetailComponent,
     TravelListItemComponent,
     ToggleMenuDirective,
-    SigninComponent,
-    SignupComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

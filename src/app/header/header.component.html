@@ -11,22 +11,27 @@
         <li class="nav-item" routerLinkActive="bold-font" [routerLinkActiveOptions]="{exact:true}">
           <a class="nav-link" routerLink="/">Welcome</a>
         </li>
-        <li class="nav-item" routerLinkActive="bold-font">
+        <li class="nav-item" routerLinkActive="bold-font" *ngIf="isAuthenticated">
           <a class="nav-link" routerLink="/create">New Travel</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             routerLink="/history"
-             routerLinkActive="bold-font">
-             Travel History
-          </a>
+        <li class="nav-item" routerLinkActive="bold-font" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/travellist">Travel List</a>
         </li>
       </ul>
-      <ul class="navbar-nav" *ngIf="authService.isUserSignedIn()">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" style="cursor: pointer" (click)="onLogout()">Log out</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
         <li class="nav-item dropdown" toggleMenu="manage-button-dropdown-men">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            Manage
+          <a class="nav-link dropdown-toggle"
+             *ngIf="isAuthenticated"
+             id="navbarDropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">
+             Manage
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="manage-button-dropdown-menu">
             <li><a class="dropdown-item" (click)="fetchTravelHistories()">Fetch Data</a></li>

@@ -1,4 +1,5 @@
 import { Component, Output } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component, Output } from '@angular/core';
 })
 export class AppComponent {
   title = "Travel Book";
+
+  constructor(private authService: AuthService) {
+    this.authService.autoSignIn();
+  }
 }
