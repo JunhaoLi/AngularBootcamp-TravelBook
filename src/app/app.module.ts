@@ -1,63 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { CreateTravelComponent } from './create-travel/create-travel.component';
-import { TravelListComponent } from './travel-list/travel-list.component';
-import { TravelDetailComponent } from './travel-list/travel-detail/travel-detail.component';
-import { TravelListItemComponent } from './travel-list/travel-list-item/travel-list-item.component';
-import { ToggleMenuDirective } from './shared/toggleMenu.directive';
-import { AuthService } from './auth/auth.service';
-import { DataService } from './travel-list/travel-list.service';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './auth/auth-guard.service';
-import { CanDeactivateGuard } from './shared/can-deactivate.service';
-import { LoggingInterceptor } from './shared/logging-interceptor.service';
-import { AuthInterceptor } from './auth/auth-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { TravelListModule } from './travel-list/travel-list.module';
+import { CreateTravelModule } from './create-travel/create-travel.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CreateTravelComponent,
-    TravelListComponent,
-    TravelDetailComponent,
-    TravelListItemComponent,
-    ToggleMenuDirective,
     NotFoundComponent,
     AuthComponent,
-    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    SharedModule,
+    TravelListModule,
+    CreateTravelModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    DataService,
-    CanDeactivateGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoggingInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
+
   ],
   bootstrap: [AppComponent]
 })

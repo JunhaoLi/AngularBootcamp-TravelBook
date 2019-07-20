@@ -24,7 +24,7 @@ export class AuthService {
     private tokenEpirationTimer: any;
 
     // make sure you set up email authentication in your firebase
-    authKey = '[your auth key]';
+    authKey = 'AIzaSyC-AvpfVMYfqd5VLYR8PCkIAIHQp2SSuLE';
 
     constructor(private http: HttpClient, private router: Router){}
 
