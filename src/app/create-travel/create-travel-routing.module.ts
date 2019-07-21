@@ -6,8 +6,8 @@ import { DataResolver } from '../shared/storage/data-resolver.service';
 import { AuthGuard } from '../auth/auth-guard.service';
 import { CanDeactivateGuard } from '../shared/can-deactivate.service';
 
-const createTravelRoutes: Routes = [ { 
-    path: 'create',
+const createTravelRoutes: Routes = [{ 
+    path: '',
     component: CreateTravelComponent,
     resolve: [DataResolver],
     canActivate: [AuthGuard],

@@ -1,4 +1,4 @@
-<div *ngIf="travelItem != null; else infoText">
+<div *ngIf="isTravelItemNull(); else infoText">
   <div class="row">
     <h2>
       {{travelItem.title}}

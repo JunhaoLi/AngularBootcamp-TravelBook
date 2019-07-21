@@ -11,12 +11,16 @@ export class TravelListItemComponent implements OnInit {
 
   @Input()travelItemIndex: number;
 
-  private travelItem: TravelEntry;
+  private travelItemInner: TravelEntry;
 
   constructor(private dataService: DataService) { }
 
+  get travelItem() {
+    return this.travelItemInner;
+  }
+
   ngOnInit() {
-    this.travelItem = this.dataService.getTravelHistory(this.travelItemIndex);
+    this.travelItemInner = this.dataService.getTravelHistory(this.travelItemIndex);
   }
 
   onSelected() {

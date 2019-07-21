@@ -8,8 +8,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthComponent } from './auth/auth.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { TravelListModule } from './travel-list/travel-list.module';
-import { CreateTravelModule } from './create-travel/create-travel.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 
@@ -25,10 +23,7 @@ import { CoreModule } from './core.module';
     BrowserModule,
     CoreModule,
     SharedModule,
-    TravelListModule,
-    CreateTravelModule,
-    AppRoutingModule,
-
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

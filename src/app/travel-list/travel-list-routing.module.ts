@@ -6,7 +6,7 @@ import { TravelListComponent } from './travel-list.component';
 import { DataResolver } from '../shared/storage/data-resolver.service';
 
 const travellistRoutes: Routes = [{
-    path: 'travellist',
+    path: '',
     canActivate: [AuthGuard],
     component: TravelListComponent,
     resolve: [DataResolver]

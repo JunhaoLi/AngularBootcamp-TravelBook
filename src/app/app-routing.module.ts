@@ -22,6 +22,21 @@ const appRoutes: Routes = [
         path: 'home',
         component: HomeComponent
     },
+    {
+        path: 'travellist',
+        loadChildren: () => import('./travel-list/travel-list.module').then(m => m.TravelListModule),
+        // loadChildren: './travel-list/travel-list.module#TravelListModule',
+        canActivate: [AuthGuard],
+        resolve: [DataResolver]
+    },
+    { 
+        path: 'create',
+        loadChildren: () => import('./create-travel/create-travel.module').then(m => m.CreateTravelModule),
+        // loadChildren: './create-travel/create-travel.module#CreateTravelModule',
+        resolve: [DataResolver],
+        canActivate: [AuthGuard],
+        canDeactivate: [CanDeactivateGuard]
+    },
     { path: 'not-found', component: NotFoundComponent, pathMatch: 'full' },
     { path: '**', redirectTo: 'not-found' }
 ];

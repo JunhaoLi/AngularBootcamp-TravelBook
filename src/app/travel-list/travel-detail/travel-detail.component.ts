@@ -34,4 +34,8 @@ export class TravelDetailComponent implements OnInit {
   onEditButtonClicked() {
     this.router.navigate(['/create'], {queryParams: {edit: true, id: this.selectedTravelItemIndex}});
   }
+
+  isTravelItemNull() {
+    return this.travelItem != null;
+  }
 }
