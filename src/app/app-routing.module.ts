@@ -1,8 +1,7 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home/home.component';
-import { CreateTravelComponent } from './create-travel/create-travel.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { CanDeactivateGuard } from './shared/can-deactivate.service';
@@ -42,7 +41,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })],
     exports: [RouterModule]
 })
 export class AppRoutingModule{}
