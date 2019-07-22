@@ -1,10 +1,11 @@
 import { Observable, Subject, BehaviorSubject, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
 import { User } from './user.model';
-import { Router } from '@angular/router';
 
 export class AuthResponseData {
     kind: string;
@@ -24,7 +25,7 @@ export class AuthService {
     private tokenEpirationTimer: any;
 
     // make sure you set up email authentication in your firebase
-    authKey = 'AIzaSyC-AvpfVMYfqd5VLYR8PCkIAIHQp2SSuLE';
+    authKey = environment.firebaseAPIKey;
 
     constructor(private http: HttpClient, private router: Router){}
 
